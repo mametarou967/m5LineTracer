@@ -1,0 +1,1 @@
+{"components":[{"id":"____screen","createTime":1587171032131,"name":"Screen","x":0,"y":0,"width":120,"height":240,"backgroundColor":"#111111","backgroundImage":"","type":"screen"}],"type":"stick-C","versions":"Beta","units":[],"hats":[],"blockly":"<block type=\"basic_on_setup\" id=\"setup_block\" deletable=\"false\" x=\"50\" y=\"50\"></block>","Blockly.Remotes":[],"modules":[]}
