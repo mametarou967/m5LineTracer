@@ -96,8 +96,14 @@ class BeetlecAutomaton:
     self.action()
   
   def action(self):
-    self.beetlecController.moveRight()
-    self.beetlecController.moveLeft()
+    if self.state == self.stateOnlineRightMove:
+      self.beetlecController.moveRight()
+    elif self.state == self.stateOnlineLeftMove:
+      self.beetlecController.moveLeft()
+    elif self.state == self.stateHamidashiRight:
+      self.beetlecController.moveLeft()
+    elif self.state == self.stateHamidashiLeft:
+      self.beetlecController.moveRight()
     
 display = Display()
 sensor = Sensor(pinin)
