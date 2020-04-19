@@ -15,10 +15,24 @@ pinin = machine.Pin(33, mode=machine.Pin.IN, pull=machine.Pin.PULL_UP)
 leftover = False
 rigthover = False
 
+class Display:
+  
+  def __init__(self):
+    self.row = 0
+    self.rowMax = 13
+  
+  def printDisp(self,string):
+    if self.row >= self.rowMax:
+      lcd.clear()
+      self.row = 0
+    M5TextBox(0, self.row * 12, str(deltaY) + "_" + string)
+    self.row = self.row + 1
+
+display = Display()
+
 while True:
   lineTraceValue = pinin.value()
-  label1 = M5TextBox(0, deltaY * 12, "hello" + str(deltaY) + "_" + str(lineTraceValue))
-  deltaY = deltaY + 1
+  display.printDisp(str(lineTraceValue))
   if lineTraceValue == 1:
     leftover = False
     rightover = False
@@ -31,8 +45,7 @@ while True:
     leftover = True
     wait_ms(150)
   lineTraceValue = pinin.value()
-  label1 = M5TextBox(0, deltaY * 12, "hello" + str(deltaY) + "_" + str(lineTraceValue))
-  deltaY = deltaY + 1
+  display.printDisp(str(lineTraceValue))
   if lineTraceValue == 1:
     leftover = False
     rightover = False
@@ -44,6 +57,3 @@ while True:
   else:
     leftover = True
     wait_ms(150)
-  if deltaY >= 13:
-    lcd.clear()
-    deltaY = 0
